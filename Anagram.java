@@ -8,8 +8,13 @@ public class Anagram {
 		System.out.println(isAnagram("Tom Marvolo Riddle", "I am Lord Voldemort")); // true
 
 		// Tests the preProcess function.
+<<<<<<< HEAD
 		System.out.println(preProcess("What? No way!!!"));
 
+=======
+		System.out.println(preProcess("I am a weakish speller"));
+		
+>>>>>>> 55be4cc5941ea6230327bd59287100b46955c80d
 		// Tests the randomAnagram function.
 		System.out.println("silent and " + randomAnagram("silent") + " are anagrams.");
 
@@ -29,6 +34,7 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
+<<<<<<< HEAD
 		boolean isAnagram = true;
 		int a = preProcess(str1).length();
 		int b = preProcess(str2).length();
@@ -49,6 +55,25 @@ public class Anagram {
 				isAnagram = true;
 		}
 		return isAnagram;
+=======
+		int counter = 0;
+		str1 = preProcess1(str1);
+		str2 = preProcess1(str2);
+          for(int i = 0; i < str1.length(); i++){
+            for(int j = 0; j < str1.length(); j++){
+				if(str1.charAt(i) == str2.charAt(j)){
+					counter++;
+					break;
+				}
+			}
+		  }
+		if(counter == str1.length()){
+			return true;
+		}
+		else{
+			return false;
+		}
+>>>>>>> 55be4cc5941ea6230327bd59287100b46955c80d
 	}
 
 	// Returns a preprocessed version of the given string: all the letter characters
@@ -57,6 +82,7 @@ public class Anagram {
 	// which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
+<<<<<<< HEAD
 		String standString = "";
 
 		for (int i = 0; i <= str.length(); i++) {
@@ -98,5 +124,38 @@ public class Anagram {
 		}
 		return randomAnagram;
 
+=======
+		String newStr = "";
+        for(int i = 0; i < str.length(); i++){
+			str = str.toLowerCase();
+			if((str.charAt(i) >= 'a' && str.charAt(i) <= 'z') || str.charAt(i) == ' '){
+                newStr += str.charAt(i);
+			}
+		}
+		return newStr;
+	} 
+
+	private static String preProcess1(String str) {
+		String newStr = "";
+        for(int i = 0; i < str.length(); i++){
+			str = str.toLowerCase();
+			if((str.charAt(i) >= 'a' && str.charAt(i) <= 'z')){
+                newStr += str.charAt(i);
+			}
+		}
+		return newStr;
+	} 
+	   
+	// Returns a random anagram of the given string. The random anagram consists of the same
+	// characters as the given string, re-arranged in a random order. 
+	public static String randomAnagram(String str) {
+		String newStr = "";
+		while (str.length() > 0) {
+			int random = (int)(str.length() * Math.random());
+			newStr += str.charAt(random);
+			str = str.substring(0, random) + str.substring(random + 1);
+		}
+		return newStr;
+>>>>>>> 55be4cc5941ea6230327bd59287100b46955c80d
 	}
 }
